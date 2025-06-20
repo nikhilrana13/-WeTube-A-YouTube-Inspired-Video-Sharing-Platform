@@ -1,0 +1,17 @@
+# For node backend
+backend/node_modules
+backend/.env
+# Ignore uploaded videos and images
+backend/Uploads/
+
+# For React frontend
+frontend/node_modules
+frontend/dist
+frontend/.env
+
+# Firebase Admin SDK secret
+backend/serviceAccountKey.json
+
+# General
+.DS_Store
+.env
