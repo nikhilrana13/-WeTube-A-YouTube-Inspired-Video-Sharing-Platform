@@ -25,15 +25,34 @@ WeTube is a fully responsive full-stack MERN application that replicates core fe
 ⚡ Built with React, Redux, Express, MongoDB, Node.js
 
 🛠️ Tech Stack
+Frontend:
 
-Frontend: React, Redux, Tailwind CSS
+React.js
 
-Backend: Express.js, Node.js
+Redux Toolkit
 
-Database: MongoDB
+Tailwind CSS
 
-Auth: Firebase (Google Sign-In)
+shadcn/ui
 
-File Upload: Multer + Cloudinary
+React Router
 
-State Management: Redux Toolkit
+Backend:
+
+Node.js
+
+Express.js
+
+Database:
+
+MongoDB (Mongoose)
+
+Authentication:
+
+Firebase (Google Sign-In)
+
+File Upload & Media Storage:
+
+Multer (DiskStorage)
+
+Cloudinary (Video/Image Storage)
