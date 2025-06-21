@@ -19,6 +19,7 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [allVideo, setallVideo] = useState([]);
   const dispatch = useDispatch();
+  console.log("import meta",import.meta.env.VITE_BACKEND_URL);
 
   // fetch all videos
   useEffect(()=>{
