@@ -1,13 +1,13 @@
 
 import {Routes,Route} from "react-router-dom"
 import Home from "./pages/Home";
-import ViewUserChannel from "./Components/Pagecomponents/ViewUserChannel";
+import ViewUserChannel from "./components/Pagecomponents/ViewUserChannel";
 import { Toaster } from "react-hot-toast";
-import VideoUpload from "./Components/Pagecomponents/VideoUpload";
-import UserAllvideos from "./Components/Pagecomponents/UserAllvideos";
-import EachVideoDetail from "./Components/Pagecomponents/EachVideoDetail";
-import CreateChannel from "./Components/Pagecomponents/CreateChannel";
-import ProtectedRoute from "./Components/Pagecomponents/ProtectedRoute";
+import VideoUpload from "./components/Pagecomponents/VideoUpload";
+import UserAllvideos from "./components/Pagecomponents/UserAllvideos";
+import EachVideoDetail from "./components/Pagecomponents/EachVideoDetail";
+import CreateChannel from "./components/Pagecomponents/CreateChannel";
+import ProtectedRoute from "./components/Pagecomponents/ProtectedRoute";
 
 
 function App() {

@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import Navbar from '@/Components/Pagecomponents/Navbar';
+import Navbar from '@/components/Pagecomponents/Navbar';
 import { NavLink, Outlet } from 'react-router-dom';
 import { Gamepad, HomeIcon, Loader2, Music, ShoppingBagIcon, TrendingUp, VideoIcon } from 'lucide-react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { SetVideos } from '@/Redux/VideoSlice';
-import VideoCard from '@/Components/Pagecomponents/VideoCard';
+import VideoCard from '@/components/Pagecomponents/VideoCard';
 import dayjs from 'dayjs';
 import { useLocation } from 'react-router-dom';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import VideoCardShimmer from '@/Components/Pagecomponents/VideoCardShimmer';
+import VideoCardShimmer from '@/components/Pagecomponents/VideoCardShimmer';
 dayjs.extend(relativeTime)
 
 

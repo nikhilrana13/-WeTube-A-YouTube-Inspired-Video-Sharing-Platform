@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Pagecomponents/customcss/Shimmercss.css';
+import './customcss/Shimmercss.css';
 
 const ShimmerEffectCard = () => {
   return (
