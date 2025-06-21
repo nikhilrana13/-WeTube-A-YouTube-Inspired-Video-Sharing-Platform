@@ -95,8 +95,8 @@ const UpdateChannelDetail = async (req, res) => {
     const userId = req.user;
     const channelid = req.params.id;
     const { name, description } = req.body;
-    // console.log("req.body", req.body);
-    // console.log("req.files", req.files);
+    console.log("req.body", req.body);
+    console.log("req.files", req.files);
     //  check user exists or not
     const user = await User.findById({ _id: userId });
     if (!user) {
