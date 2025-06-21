@@ -48,7 +48,7 @@ const CustomizeChannel = ({channelid}) => {
            }
        }
         fetchChanneldetails();
-  },[channelid])
+  },[channelid,setValue])
 
   const onSubmit = async(data)=>{
          const formdata = new FormData();
@@ -103,11 +103,11 @@ const CustomizeChannel = ({channelid}) => {
           <div className="grid gap-4">
             <div className="grid gap-3">
               <Label htmlFor="name">Name</Label>
-              <Input type="text" id="name" name="name" {...register("name")} defaultValue={updateChannel?.name}  />
+              <Input type="text" id="name" name="name" {...register("name")}  className='resize-none border' ></Input>
             </div>
             <div className="grid gap-3">
               <Label htmlFor="description">Description</Label>
-              <textarea className='resize-none border' id="description" defaultValue={updateChannel?.description}  name="description" {...register("description")} ></textarea>
+              <textarea className='resize-none border' id="description"   name="description" {...register("description")} ></textarea>
             </div>
              <div className="grid gap-3">
               <Label htmlFor="coverimage">CoverImage</Label>
