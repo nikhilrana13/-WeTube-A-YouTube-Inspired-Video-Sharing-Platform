@@ -37,7 +37,8 @@ const Navbar = ({Searchinput,setSearchinput}) => {
        })
       
        if(response.data){
-        // console.log("user logged in",response.data)
+        console.log("user logged in",response.data)
+         localStorage.setItem("jwttoken",response.data.token);
          dispatch(SetUser(response.data.user));
          navigate("/");
        }
@@ -55,10 +56,11 @@ const Navbar = ({Searchinput,setSearchinput}) => {
           authorization:`Bearer ${token}`,
           "Content-Type":"application/json"
         },
-        withCredentials:true
+        withCredentials:true;
        })
        if(response.data){
         // console.log("user logged out",response.data)
+        localStorage.removeItem("jwttoken");
         dispatch(SetUser(null));
         navigate("/");
        }
