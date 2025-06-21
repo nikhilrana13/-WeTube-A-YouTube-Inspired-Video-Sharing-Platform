@@ -37,7 +37,12 @@ const EachVideoDetail = () => {
   useEffect(() => {
     const FetchVideodetials = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/video/${extractid}`, { withCredentials: true });
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/video/${extractid}`, { 
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwttoken")}`
+          },
+          withCredentials: true
+         });
         if (response.data) {
           setVideoDetails(response?.data?.video);
           // console.log("video details", response?.data?.video);
@@ -75,7 +80,12 @@ const EachVideoDetail = () => {
   // handle subscribe function 
   const handleSubcribeAndUnsubcribe = async () => {
     try {
-      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/subscriber/subscribe`, { channelId }, { withCredentials: true });
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/subscriber/subscribe`, { channelId }, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("jwttoken")}`
+        },
+        withCredentials: true
+      });
       if (response.data) {
         toast.success(response?.data?.message || "Subscribed successfully");
         if (response.data?.message.includes("Subscribed")) {
@@ -84,7 +94,12 @@ const EachVideoDetail = () => {
           setSubcribe(false);
         }
         // update video after subscribe
-        const updatedVideo = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/video/${extractid}`, { withCredentials: true });
+        const updatedVideo = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/video/${extractid}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwttoken")}`
+          },
+          withCredentials: true
+        });
         if (updatedVideo?.data?.video) {
           setVideoDetails(updatedVideo?.data?.video);
         }
@@ -105,7 +120,12 @@ const EachVideoDetail = () => {
   // handle like and unlike
   const handleLikeAndDislike = async () => {
     try {
-      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/like/${extractid}`, {}, { withCredentials: true });
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/like/${extractid}`, {}, { 
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("jwttoken")}`
+        },
+        withCredentials: true
+       });
       if (response.data) {
         toast.success(response?.data?.message || "Liked successfully");
         //  console.log("response",response?.data);
@@ -116,7 +136,12 @@ const EachVideoDetail = () => {
         setLike(false);
       }
       //  update video after like
-      const updatedVideo = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/video/${extractid}`, { withCredentials: true });
+      const updatedVideo = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/video/${extractid}`, { 
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("jwttoken")}`
+        },
+        withCredentials: true
+       });
       if (updatedVideo?.data?.video) {
         setVideoDetails(updatedVideo?.data?.video);
       }
@@ -137,14 +162,24 @@ const EachVideoDetail = () => {
     const commenttext = data.commenttext;
     //  console.log("comment",comment);
     try {
-      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/comment/add/${extractid}`, { commenttext }, { withCredentials: true });
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/comment/add/${extractid}`, { commenttext }, { 
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("jwttoken")}`
+        },
+        withCredentials: true
+       });
       if (response.data) {
         // console.log("response",response?.data);
         toast.success(response?.data?.message || "comment added successfully");
         reset();
         const updatedComment = response?.data?.comment;
         setallComment((prevcomment) => [updatedComment, ...prevcomment]);
-        const updatedVideo = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/video/${extractid}`, { withCredentials: true });
+        const updatedVideo = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/video/${extractid}`, { 
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwttoken")}`
+          },
+          withCredentials: true
+         });
         if (updatedVideo?.data?.video) {
           setVideoDetails(updatedVideo?.data?.video);
         }
@@ -156,11 +191,21 @@ const EachVideoDetail = () => {
   // Show all comments
   const fetchallcomments = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/comment/show/${extractid}`, { withCredentials: true });
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/comment/show/${extractid}`, { 
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("jwttoken")}`
+        },
+        withCredentials: true
+       });
       if (response.data) {
         setallComment(response?.data?.comments);
         // console.log("comments",response?.data?.comments);
-        const updatedVideo = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/video/${extractid}`, { withCredentials: true });
+        const updatedVideo = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/video/${extractid}`, { 
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwttoken")}`
+          },
+          withCredentials: true
+         });
         if (updatedVideo?.data?.video) {
           setVideoDetails(updatedVideo?.data?.video);
         }
@@ -181,7 +226,12 @@ const EachVideoDetail = () => {
   useEffect(() => {
     const fetchchanneldetails = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/channel/${CurrentUserChannelId}`, { withCredentials: true });
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/channel/${CurrentUserChannelId}`, { 
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwttoken")}`
+          },
+          withCredentials: true
+         });
         if (response.data) {
           setchanneldetail(response?.data?.channel);
           // console.log("channel detail", response?.data?.channel);
@@ -197,12 +247,22 @@ const EachVideoDetail = () => {
   useEffect(()=>{
        const fetchViews = async()=>{
         try {
-          const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/view/${extractid}`,{},{withCredentials:true});
+          const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/view/${extractid}`,{},{
+            headers:{
+              Authorization:`Bearer ${localStorage.getItem("jwttoken")}`
+            },
+            withCredentials:true
+          });
           if(response.data){
             // console.log("response",response?.data?.message);
             setViews(response?.data?.video);
             // console.log("views",response?.data?.views);
-            const updatedVideo = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/video/${extractid}`, { withCredentials: true });
+            const updatedVideo = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/video/${extractid}`, { 
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("jwttoken")}`
+              },
+              withCredentials: true
+             });
             if (updatedVideo?.data?.video) {
               setVideoDetails(updatedVideo?.data?.video);
             }

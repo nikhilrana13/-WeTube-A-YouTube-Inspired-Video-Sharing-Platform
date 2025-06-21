@@ -13,7 +13,12 @@ const UserAllvideos = () => {
     const fetchVideos = async ()=>{
         try {
             setLoading(true);
-            const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/video/uservideos`, {withCredentials:true});
+            const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/video/uservideos`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("jwttoken")}`
+                },
+                withCredentials: true
+            });
             if(response.data){
                 setVideos(response.data?.user?.videos);
                 // console.log("videos",response.data?.user?.videos);
@@ -31,7 +36,12 @@ const UserAllvideos = () => {
 // handle delete video
    const DeleteVideo = async(id)=>{
        try {
-        const response = await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/video/delete/${id}`,{withCredentials:true});
+        const response = await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/video/delete/${id}`,{
+            headers:{
+                Authorization:`Bearer ${localStorage.getItem("token")}`
+            },
+            withCredentials:true
+        });
         if(response.data){
             toast.success(response?.data?.message || "Video deleted successfully");
             const filteredVideos = Videos.filter(video=>video._id !== id);

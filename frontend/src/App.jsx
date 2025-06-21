@@ -17,17 +17,21 @@ function App() {
       <div className="app px-[2vw] ">
        <Routes>
         <Route path="/" element={<Home />}>
-      <Route path="channel/:channelid" element={<ProtectedRoute><ViewUserChannel /></ProtectedRoute>}></Route>
+         <Route path="channel/:channelid" element={<ViewUserChannel />}></Route>
         </Route>
-        {/*  videos route */}
-        <Route path="/uploadvideo" element={<ProtectedRoute><VideoUpload /></ProtectedRoute>}></Route>
-        <Route path="/myvideos" element={<ProtectedRoute><UserAllvideos /></ProtectedRoute>}></Route>
-        <Route path="/video/:videoid" element={<EachVideoDetail />}></Route>
-         {/* channel route */}
-        <Route path="/createchannel" element={<ProtectedRoute><CreateChannel /></ProtectedRoute>}></Route>
+         {/* protected routes */}
+         <Route element={<ProtectedRoute />}>
+        <Route path="/uploadvideo" element={<VideoUpload />}></Route>
+         <Route path="/myvideos" element={<UserAllvideos />}></Route>
+        <Route path="/createchannel" element={<CreateChannel />}></Route>
+        
+          </Route>
+      <Route path="/video/:videoid" element={<EachVideoDetail />}></Route>
+    
         </Routes>
        <Toaster />
       </div>
+     
      
     </>
   )

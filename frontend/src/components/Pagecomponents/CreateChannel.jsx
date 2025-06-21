@@ -20,7 +20,14 @@ const CreateChannel = () => {
         formdata.append("profilepicture",data.profilepicture[0]);
         try {
             setLoading(true);
-            const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}`,formdata,{withCredentials:true});
+            const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}`,formdata,{
+               headers:{
+                 Authorization:`Bearer ${localStorage.getItem("jwttoken")}`,
+                'Content-Type':'multipart/form-data'
+               },
+
+               withCredentials:true
+            });
             if(response.data){
                 toast.success(response?.data?.message || "Channel created successfully");
             }

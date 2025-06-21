@@ -29,7 +29,12 @@ const CustomizeChannel = ({channelid}) => {
   useEffect(()=>{
        const fetchChanneldetails = async () => {
            try {
-            const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/channel/${channelid}`,{withCredentials:true})
+            const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/channel/${channelid}`,{
+              headers:{
+                Authorization:`Bearer ${localStorage.getItem("jwttoken")}`
+              },
+              withCredentials:true
+            })
             if(response.data){
                setValue("name",response.data.channel.name);
                setValue("description",response.data.channel.description);
@@ -51,14 +56,24 @@ const CustomizeChannel = ({channelid}) => {
          formdata.append("description",data.description);
          formdata.append("coverimage",data.coverimage[0]);
          formdata.append("profilepicture",data.profilepicture[0]);
+        if (!data.name && !data.description && !data.coverimage?.length && !data.profilepicture?.length) {
+            toast.error("Please update at least one field before saving.");
+          return;
+        }
         //  for (const pair of formdata.entries()){
         //   console.log(pair[0]+ ', ' + pair[1]);
         //  }
           try {
              SetLoading(true);
-             const response = await axios.put(`http://localhost:4000/api/channel/update/${channelid}`,formdata,{withCredentials:true});
+             const response = await axios.put(`http://localhost:4000/api/channel/update/${channelid}`,formdata,{
+              headers:{
+                Authorization:`Bearer ${localStorage.getItem("jwttoken")}`,
+                "Content-Type":"multipart/form-data"
+              },
+              withCredentials:true
+             });
              if(response.data){
-                toast.success(response?.data?.message || "Channel updated successfully");
+                toast.success("Channel updated successfully");
                 SetUpdateChannel(response?.data?.updateChannel)
                 navigate("/")
              }
