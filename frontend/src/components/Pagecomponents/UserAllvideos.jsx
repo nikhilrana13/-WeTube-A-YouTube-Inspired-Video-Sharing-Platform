@@ -38,7 +38,7 @@ const UserAllvideos = () => {
        try {
         const response = await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/video/delete/${id}`,{
             headers:{
-                Authorization:`Bearer ${localStorage.getItem("token")}`
+                Authorization:`Bearer ${localStorage.getItem("jwttoken")}`
             },
             withCredentials:true
         });
