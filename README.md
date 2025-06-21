@@ -56,3 +56,5 @@ File Upload & Media Storage:
 Multer (DiskStorage)
 
 Cloudinary (Video/Image Storage)
+
+project live link : https://wetube-a-youtube-inspired-video-sharing-rm9e.onrender.com
