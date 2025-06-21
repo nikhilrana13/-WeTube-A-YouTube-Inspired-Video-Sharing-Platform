@@ -25,7 +25,7 @@ const Home = () => {
      const fetchVideos = async()=>{
         try {
           setLoading(true);
-        const response = await axios.get("http://localhost:4000/api/video/allvideos", {withCredentials:true});
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/video/allvideos`, {withCredentials:true});
         if(response.data){
           const Showallvideo = response?.data?.videos;
           // if search input condition is true then filter videos by search input otherwise show all videos
