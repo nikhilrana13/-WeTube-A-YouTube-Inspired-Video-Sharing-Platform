@@ -18,7 +18,7 @@ const LoginWithGoogle = async(req,res)=>{
         }
         // send jwt token to use in later other requests for find user info
         const token = jwt.sign({id:user._id},process.env.JWT_SECRET,{expiresIn:"7d"})
-        res.cookie("token",token,{httpOnly:true,secure:false,sameSite:"lax"})
+        res.cookie("token",token,{httpOnly:true,secure:true,sameSite:"none"})
         return res.status(200).json({message:"user logged in",user,token})        
     } catch (error) {
         console.log(error)
@@ -34,7 +34,7 @@ const Logout = async(req,res)=>{
             await admin.auth().revokeRefreshTokens(req.user.uid);
           }
 
-          res.clearCookie("token",{httpOnly:true,secure:false,sameSite:"lax"});
+          res.clearCookie("token",{httpOnly:true,secure:true,sameSite:"none"});
           console.log("cookie deleted")
           return res.status(200).json({message:"user logged out"})
     } catch (error) {
