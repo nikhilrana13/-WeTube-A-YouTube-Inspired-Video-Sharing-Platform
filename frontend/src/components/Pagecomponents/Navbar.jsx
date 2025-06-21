@@ -18,6 +18,7 @@ const Navbar = ({Searchinput,setSearchinput}) => {
     const user = useSelector((state)=>state.Auth.user);
     // console.log("user",user)
 
+// console.log("ENV BACKEND_URL:", import.meta.env.VITE_BACKEND_URL);
 
 
 // handle sign in and sign out
@@ -27,7 +28,7 @@ const Navbar = ({Searchinput,setSearchinput}) => {
        const result = await signInWithPopup(auth,GoogleProvider);
     //    console.log("result",result)
        const token = await result.user.getIdToken();
-       const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/auth/login`,{},{
+       const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/login`,{},{
         headers:{
           authorization:`Bearer ${token}`,
           "Content-Type":"application/json"
