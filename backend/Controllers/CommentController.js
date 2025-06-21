@@ -6,6 +6,7 @@ const Comment = require("../models/CommentModel");
 const AddComment = async (req, res) => {
   try {
     const userId = req.user;
+    console.log("userId", userId);
     const user = await User.findById(userId);
     if (!user) {
       return res.status(404).json({ message: "please log in first" });
