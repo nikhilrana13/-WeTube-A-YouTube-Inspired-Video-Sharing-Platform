@@ -23,6 +23,11 @@ const UploadVideo = async (req, res) => {
     const { title, description } = req.body;
     console.log("req.files", req.files);
     console.log("req.body", req.body);
+
+  console.log("req.files", req.files); 
+console.log("req.files['Video']", req.files["Video"]);
+console.log("Video file path", req.files["Video"]?.[0]?.path);
+
     if (!title || !description) {
       return res
         .status(400)
@@ -39,19 +44,7 @@ const UploadVideo = async (req, res) => {
       const Optimizedthumbnail = await sharp(thumbnailUrl.path).resize({ width: 500, height: 500, fit: "inside" }).toFormat("jpeg", { quality: 90 }).toBuffer();
       const cloudthumbnail = await cloudinary.uploader.upload(`data:image/jpeg;base64,${Optimizedthumbnail.toString("base64")}`); 
       const thumbnail = cloudthumbnail.secure_url;
-    // // upload video to cloudinary using stream
-    // const streamUpload = (req)=>{
-    //     return new Promise((resolve,reject)=>{
-    //         const stream =  cloudinary.uploader.upload_stream({resource_type:"video"},(error,result)=>{
-    //             if(result){
-    //                 resolve(result)
-    //             }else{
-    //                 reject(error)
-    //             }
-    //         })
-    //         streamifier.createReadStream(req.file.buffer).pipe(stream)
-    //     })
-    // }
+  
     // upload large videe using cloudinary
     const cloudresponse = await new Promise((resolve, reject) => {
       cloudinary.uploader.upload_large(

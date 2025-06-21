@@ -10,11 +10,23 @@ const SubcriberRoute = require("./routes/SubcriberRoute");
 const CommentRoute = require("./routes/CommentRoute");
 const LikeRoute = require("./routes/LikeRoute");
 const viewsRoute = require("./routes/ViewRoute");
+const path = require("path");
+const fs = require("fs")
+
+
+// for create folder on deploy
+const uploadPath = path.join(__dirname,"Uploads/Videos");
+if(!fs.existsSync(uploadPath)){
+    fs.mkdirSync(uploadPath,{recursive:true})
+}
 
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 5000;
+
+
+
 
 // middleware
 app.use(cors({
