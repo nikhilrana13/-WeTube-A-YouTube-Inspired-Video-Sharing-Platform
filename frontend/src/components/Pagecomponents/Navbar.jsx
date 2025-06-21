@@ -56,7 +56,7 @@ const Navbar = ({Searchinput,setSearchinput}) => {
           authorization:`Bearer ${token}`,
           "Content-Type":"application/json"
         },
-        withCredentials:true;
+        withCredentials:true
        })
        if(response.data){
         // console.log("user logged out",response.data)
