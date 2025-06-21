@@ -18,16 +18,16 @@ const port = process.env.PORT || 5000;
 
 // middleware
 app.use(cors({
-    origin: process.env.FRONTEND_URL,
+    origin:process.env.FRONTEND_URL,
     credentials:true,
 }));
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Credentials", "true");
-  res.header("Access-Control-Allow-Origin", process.env.FRONTEND_URL);
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-  next();
-});
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Credentials", "true");
+//   res.header("Access-Control-Allow-Origin", process.env.FRONTEND_URL);
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+//   next();
+// });
 
 
 // console.log("Allowed origin is:", process.env.FRONTEND_URL);

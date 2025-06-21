@@ -3,8 +3,9 @@ const jwt = require("jsonwebtoken");
 const UserAuthenticated = async(req,res,next)=>{
     try {
         const authHeader = req.headers.authorization;
+        // console.log("authHeader",authHeader)
         const token = authHeader && authHeader.split(" ")[1]; // Bearer token
-        if(!token){
+        if(!token || token === "null"){
             return res.status(401).json({message:"not authenticated please login"});
         }
 
@@ -12,7 +13,8 @@ const UserAuthenticated = async(req,res,next)=>{
         req.user = decoded.id;
         next();
     } catch (error) {
-        return res.status(500).json({message:"something went wrong"});
+    //    console.error("JWT Middleware Error:", error);
+        return res.status(500).json({message:"Something went wrong in middleware"});
     }
 }
 module.exports = UserAuthenticated

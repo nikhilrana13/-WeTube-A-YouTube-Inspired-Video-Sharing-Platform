@@ -5,6 +5,7 @@ const User = require("../models/UserModel");
 const SubscribeChannelandUnsubscribe = async(req,res)=>{
     try {
         const CurrentuserId = req.user;
+        // console.log("CurrentuserId",CurrentuserId);
         const {channelId} = req.body;
         // console.log("CurrentuserId",CurrentuserId,"channelId",channelId);
 
