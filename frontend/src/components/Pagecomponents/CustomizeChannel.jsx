@@ -41,15 +41,6 @@ const CustomizeChannel = ({channelid}) => {
                SetCoverImage("coverimage",response.data.channel.coverimage);
                SetProfilePicture("profilepicture",response.data.channel.profilepicture);
                SetUpdateChannel(response.data.channel);
-               reset(
-                {
-                  name: response.data.channel.name,
-                  description: response.data.channel.description,
-                  coverimage: response.data.channel.coverimage,
-                  profilepicture: response.data.channel.profilepicture
-                }
-               );
-               
               //  console.log("channel detail",response.data.channel);  
             }
            } catch (error) {
