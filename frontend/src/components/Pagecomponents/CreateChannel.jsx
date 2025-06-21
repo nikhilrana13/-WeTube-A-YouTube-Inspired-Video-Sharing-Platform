@@ -20,7 +20,7 @@ const CreateChannel = () => {
         formdata.append("profilepicture",data.profilepicture[0]);
         try {
             setLoading(true);
-            const response = await axios.post("http://localhost:4000/api/channel/create",formdata,{withCredentials:true});
+            const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}`,formdata,{withCredentials:true});
             if(response.data){
                 toast.success(response?.data?.message || "Channel created successfully");
             }

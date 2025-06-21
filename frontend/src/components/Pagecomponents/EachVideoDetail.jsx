@@ -37,7 +37,7 @@ const EachVideoDetail = () => {
   useEffect(() => {
     const FetchVideodetials = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/video/${extractid}`, { withCredentials: true });
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/video/${extractid}`, { withCredentials: true });
         if (response.data) {
           setVideoDetails(response?.data?.video);
           // console.log("video details", response?.data?.video);
@@ -75,7 +75,7 @@ const EachVideoDetail = () => {
   // handle subscribe function 
   const handleSubcribeAndUnsubcribe = async () => {
     try {
-      const response = await axios.post("http://localhost:4000/api/subscriber/subscribe", { channelId }, { withCredentials: true });
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/subscriber/subscribe`, { channelId }, { withCredentials: true });
       if (response.data) {
         toast.success(response?.data?.message || "Subscribed successfully");
         if (response.data?.message.includes("Subscribed")) {
@@ -84,7 +84,7 @@ const EachVideoDetail = () => {
           setSubcribe(false);
         }
         // update video after subscribe
-        const updatedVideo = await axios.get(`http://localhost:4000/api/video/${extractid}`, { withCredentials: true });
+        const updatedVideo = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/video/${extractid}`, { withCredentials: true });
         if (updatedVideo?.data?.video) {
           setVideoDetails(updatedVideo?.data?.video);
         }
@@ -105,7 +105,7 @@ const EachVideoDetail = () => {
   // handle like and unlike
   const handleLikeAndDislike = async () => {
     try {
-      const response = await axios.post(`http://localhost:4000/api/like/${extractid}`, {}, { withCredentials: true });
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/like/${extractid}`, {}, { withCredentials: true });
       if (response.data) {
         toast.success(response?.data?.message || "Liked successfully");
         //  console.log("response",response?.data);
@@ -116,7 +116,7 @@ const EachVideoDetail = () => {
         setLike(false);
       }
       //  update video after like
-      const updatedVideo = await axios.get(`http://localhost:4000/api/video/${extractid}`, { withCredentials: true });
+      const updatedVideo = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/video/${extractid}`, { withCredentials: true });
       if (updatedVideo?.data?.video) {
         setVideoDetails(updatedVideo?.data?.video);
       }
@@ -137,14 +137,14 @@ const EachVideoDetail = () => {
     const commenttext = data.commenttext;
     //  console.log("comment",comment);
     try {
-      const response = await axios.post(`http://localhost:4000/api/comment/add/${extractid}`, { commenttext }, { withCredentials: true });
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/comment/add/${extractid}`, { commenttext }, { withCredentials: true });
       if (response.data) {
         // console.log("response",response?.data);
         toast.success(response?.data?.message || "comment added successfully");
         reset();
         const updatedComment = response?.data?.comment;
         setallComment((prevcomment) => [updatedComment, ...prevcomment]);
-        const updatedVideo = await axios.get(`http://localhost:4000/api/video/${extractid}`, { withCredentials: true });
+        const updatedVideo = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/video/${extractid}`, { withCredentials: true });
         if (updatedVideo?.data?.video) {
           setVideoDetails(updatedVideo?.data?.video);
         }
@@ -156,11 +156,11 @@ const EachVideoDetail = () => {
   // Show all comments
   const fetchallcomments = async () => {
     try {
-      const response = await axios.get(`http://localhost:4000/api/comment/show/${extractid}`, { withCredentials: true });
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/comment/show/${extractid}`, { withCredentials: true });
       if (response.data) {
         setallComment(response?.data?.comments);
         // console.log("comments",response?.data?.comments);
-        const updatedVideo = await axios.get(`http://localhost:4000/api/video/${extractid}`, { withCredentials: true });
+        const updatedVideo = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/video/${extractid}`, { withCredentials: true });
         if (updatedVideo?.data?.video) {
           setVideoDetails(updatedVideo?.data?.video);
         }
@@ -181,7 +181,7 @@ const EachVideoDetail = () => {
   useEffect(() => {
     const fetchchanneldetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/channel/${CurrentUserChannelId}`, { withCredentials: true });
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/channel/${CurrentUserChannelId}`, { withCredentials: true });
         if (response.data) {
           setchanneldetail(response?.data?.channel);
           // console.log("channel detail", response?.data?.channel);
@@ -197,12 +197,12 @@ const EachVideoDetail = () => {
   useEffect(()=>{
        const fetchViews = async()=>{
         try {
-          const response = await axios.post(`http://localhost:4000/api/view/${extractid}`,{},{withCredentials:true});
+          const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/view/${extractid}`,{},{withCredentials:true});
           if(response.data){
             // console.log("response",response?.data?.message);
             setViews(response?.data?.video);
             // console.log("views",response?.data?.views);
-            const updatedVideo = await axios.get(`http://localhost:4000/api/video/${extractid}`, { withCredentials: true });
+            const updatedVideo = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/video/${extractid}`, { withCredentials: true });
             if (updatedVideo?.data?.video) {
               setVideoDetails(updatedVideo?.data?.video);
             }

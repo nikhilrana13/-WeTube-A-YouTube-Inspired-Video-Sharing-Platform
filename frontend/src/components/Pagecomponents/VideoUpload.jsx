@@ -22,7 +22,7 @@ const VideoUpload = () => {
           }
       try {
         setLoading(true);
-        const response = await axios.post("http://localhost:4000/api/video/upload",formdata,{headers:{'Content-Type':'multipart/form-data'},withCredentials:true});
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/video/upload`,formdata,{headers:{'Content-Type':'multipart/form-data'},withCredentials:true});
         if(response.data){
            toast.success(response?.data?.message || "Video uploaded successfully");
            reset();

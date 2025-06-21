@@ -17,7 +17,7 @@ const ViewUserChannel = () => {
         const fetchChanneldetails = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get(`http://localhost:4000/api/channel/${channelid}`, { withCredentials: true });
+                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/channel/${channelid}`, { withCredentials: true });
                 if (response.data) {
                     setChannelDetail(response?.data?.channel)
                     // console.log("channel detail", response?.data?.channel)

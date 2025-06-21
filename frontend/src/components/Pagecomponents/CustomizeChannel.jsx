@@ -29,7 +29,7 @@ const CustomizeChannel = ({channelid}) => {
   useEffect(()=>{
        const fetchChanneldetails = async () => {
            try {
-            const response = await axios.get(`http://localhost:4000/api/channel/${channelid}`,{withCredentials:true})
+            const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/channel/${channelid}`,{withCredentials:true})
             if(response.data){
                setValue("name",response.data.channel.name);
                setValue("description",response.data.channel.description);

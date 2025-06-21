@@ -27,7 +27,7 @@ const Navbar = ({Searchinput,setSearchinput}) => {
        const result = await signInWithPopup(auth,GoogleProvider);
     //    console.log("result",result)
        const token = await result.user.getIdToken();
-       const response = await axios.post("http://localhost:4000/api/auth/login",{},{
+       const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/auth/login`,{},{
         headers:{
           authorization:`Bearer ${token}`,
           "Content-Type":"application/json"
@@ -49,7 +49,7 @@ const Navbar = ({Searchinput,setSearchinput}) => {
        const user = auth.currentUser;
        const token = user ? await user.getIdToken():"";
        
-       const response = await axios.get("http://localhost:4000/api/auth/logout",{
+       const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/auth/logout`,{
         headers:{
           authorization:`Bearer ${token}`,
           "Content-Type":"application/json"
