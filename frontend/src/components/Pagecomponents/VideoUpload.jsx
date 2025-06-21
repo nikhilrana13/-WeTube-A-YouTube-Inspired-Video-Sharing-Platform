@@ -85,7 +85,7 @@ const VideoUpload = () => {
         {...register("Video", { required: true })}
       />
     </div>
-    {errors.video && <span className="text-red-500">Video is required</span>}
+    {errors.Video && <span className="text-red-500">Video is required</span>}
     <div class="flex justify-end">
    
         <button
