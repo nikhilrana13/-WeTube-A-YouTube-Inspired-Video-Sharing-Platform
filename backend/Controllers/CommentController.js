@@ -20,7 +20,7 @@ const AddComment = async (req, res) => {
       return res.status(404).json({ message: "video not found" });
     }
     const { commenttext } = req.body;
-    // console.log("req.body", req.body);
+    console.log("req.body", req.body);
 
     if (!commenttext) {
       return res.status(400).json({ message: "comment is required" });
