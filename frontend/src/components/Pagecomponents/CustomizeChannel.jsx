@@ -41,7 +41,7 @@ const CustomizeChannel = ({channelid}) => {
                SetCoverImage("coverimage",response.data.channel.coverimage);
                SetProfilePicture("profilepicture",response.data.channel.profilepicture);
                SetUpdateChannel(response.data.channel);
-              //  console.log("channel detail",response.data.channel);
+              //  console.log("channel detail",response.data.channel);  
             }
            } catch (error) {
              console.log("failed to fetch channel details",error)
