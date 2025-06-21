@@ -21,12 +21,12 @@ const UploadVideo = async (req, res) => {
     }
     // upload video
     const { title, description } = req.body;
-    console.log("req.files", req.files);
-    console.log("req.body", req.body);
+//     console.log("req.files", req.files);
+//     console.log("req.body", req.body);
 
-  console.log("req.files", req.files); 
-console.log("req.files['Video']", req.files["Video"]);
-console.log("Video file path", req.files["Video"]?.[0]?.path);
+//   console.log("req.files", req.files); 
+// console.log("req.files['Video']", req.files["Video"]);
+// console.log("Video file path", req.files["Video"]?.[0]?.path);
 
     if (!title || !description) {
       return res

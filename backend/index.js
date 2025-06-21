@@ -14,7 +14,7 @@ const path = require("path");
 const fs = require("fs")
 
 
-// for create folder on deploy
+// for create folder on when project is live on render
 const uploadPath = path.join(__dirname,"Uploads/Videos");
 if(!fs.existsSync(uploadPath)){
     fs.mkdirSync(uploadPath,{recursive:true})
