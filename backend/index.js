@@ -21,6 +21,8 @@ app.use(cors({
     origin: process.env.FRONTEND_URL,
     credentials:true,
 }));
+
+console.log("Allowed origin is:", process.env.FRONTEND_URL);
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
