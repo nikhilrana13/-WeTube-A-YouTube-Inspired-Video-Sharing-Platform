@@ -2,8 +2,8 @@ const jwt = require("jsonwebtoken");
 
 const UserAuthenticated = async(req,res,next)=>{
     try {
-        const token = req.cookies.token;
-        console.log("token",token)
+        const authHeader = req.headers.authorization;
+        const token = authHeader && authHeader.split(" ")[1]; // Bearer token
         if(!token){
             return res.status(401).json({message:"not authenticated please login"});
         }
