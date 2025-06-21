@@ -37,7 +37,7 @@ const Navbar = ({Searchinput,setSearchinput}) => {
        })
       
        if(response.data){
-        console.log("user logged in",response.data)
+        // console.log("user logged in",response.data)
          localStorage.setItem("jwttoken",response.data.token);
          dispatch(SetUser(response.data.user));
          navigate("/");

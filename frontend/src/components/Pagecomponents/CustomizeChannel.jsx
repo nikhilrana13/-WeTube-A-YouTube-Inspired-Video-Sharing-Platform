@@ -23,7 +23,7 @@ const CustomizeChannel = ({channelid}) => {
   const [coverimage,SetCoverImage] = useState([]);
   const [updateChannel,SetUpdateChannel] = useState({});
   const [profilepicture,SetProfilePicture] = useState([]);
-  const { register, handleSubmit, setValue, formState: { errors } } = useForm();
+  const { register, handleSubmit, setValue, reset,formState: { errors } } = useForm();
 
   // fetch channel details
   useEffect(()=>{
@@ -41,6 +41,15 @@ const CustomizeChannel = ({channelid}) => {
                SetCoverImage("coverimage",response.data.channel.coverimage);
                SetProfilePicture("profilepicture",response.data.channel.profilepicture);
                SetUpdateChannel(response.data.channel);
+               reset(
+                {
+                  name: response.data.channel.name,
+                  description: response.data.channel.description,
+                  coverimage: response.data.channel.coverimage,
+                  profilepicture: response.data.channel.profilepicture
+                }
+               );
+               
               //  console.log("channel detail",response.data.channel);  
             }
            } catch (error) {
