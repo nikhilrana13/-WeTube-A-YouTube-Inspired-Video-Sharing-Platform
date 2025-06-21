@@ -65,7 +65,7 @@ const CustomizeChannel = ({channelid}) => {
         //  }
           try {
              SetLoading(true);
-             const response = await axios.put(`http://localhost:4000/api/channel/update/${channelid}`,formdata,{
+             const response = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/channel/update/${channelid}`,formdata,{
               headers:{
                 Authorization:`Bearer ${localStorage.getItem("jwttoken")}`,
                 "Content-Type":"multipart/form-data"
@@ -103,15 +103,15 @@ const CustomizeChannel = ({channelid}) => {
           <div className="grid gap-4">
             <div className="grid gap-3">
               <Label htmlFor="name">Name</Label>
-              <Input type="text" id="name" name="name" {...register("name")}   />
+              <Input type="text" id="name" name="name" {...register("name")} defaultValue={updateChannel?.name}  />
             </div>
             <div className="grid gap-3">
               <Label htmlFor="description">Description</Label>
-              <textarea className='resize-none border' id="description"  name="description" {...register("description")} ></textarea>
+              <textarea className='resize-none border' id="description" defaultValue={updateChannel?.description}  name="description" {...register("description")} ></textarea>
             </div>
              <div className="grid gap-3">
               <Label htmlFor="coverimage">CoverImage</Label>
-              <Input type="file" accept="image/*" onChange={(e)=>{SetCoverImage(e.target.files[0])}}   className='resize-none border' {...register("coverimage")}  id="coverimage" name="coverimage" ></Input>
+              <Input type="file" accept="image/*" onChange={(e)=>{SetCoverImage(e.target.files[0])}}    className='resize-none border' {...register("coverimage")}  id="coverimage" name="coverimage" ></Input>
             </div>
             <div className="grid gap-3">
               <Label htmlFor="profilepicture">ProfilePicture</Label>
