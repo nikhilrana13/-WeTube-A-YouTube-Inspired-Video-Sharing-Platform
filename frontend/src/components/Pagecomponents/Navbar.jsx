@@ -84,10 +84,10 @@ const Navbar = ({Searchinput,setSearchinput}) => {
                             placeholder="Search"
                             required
                             value={Searchinput}
-                            onChange={(e)=>setSearchinput(e.target.value)}
+                            onChange={(e)=>setSearchinput(e.target.value) }
                         />
                         <button className="border border-neutral-300 px-5 border-l-0 rounded-r-full hover:bg-neutral-100 dark:border-neutral-500 hover:dark:bg-neutral-700">
-                            <Search className="dark:text-neutral-400" />
+                            <Search className="dark:text-neutral-400"  />
                         </button>
                     </form>
                     <button className="p-2 rounded-full bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 hover:dark:bg-neutral-700">
