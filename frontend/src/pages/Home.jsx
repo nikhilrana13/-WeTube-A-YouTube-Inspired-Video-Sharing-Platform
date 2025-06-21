@@ -67,7 +67,7 @@ const Home = () => {
                     <VideoIcon className="w-6 h-6 text-black" />
                     Shorts
                 </NavLink>
-                 <NavLink to= "music" className={({ isActive})=>isActive ? `flex border flex-col md:flex-row items-center gap-5 bg-[#F2F2F2] hover:bg-[#E6E6E6] py-3 px-4 text-sm font-[500] text-black rounded-md`:`flex flex-col md:flex-row items-cente gap-5 py-3 px-4 text-sm font-[500] text-black rounded-md hover:bg-[#F2F2F2]`}>
+                 <NavLink to= "music" className={({ isActive})=>isActive ? `flex flex-col md:flex-row items-center gap-5 bg-[#F2F2F2] hover:bg-[#E6E6E6] py-3 px-4 text-sm font-[500] text-black rounded-md`:`flex flex-col md:flex-row items-center gap-5 py-3 px-4 text-sm font-[500] text-black rounded-md hover:bg-[#F2F2F2]`}   >
                     <Music className="w-6 h-6 text-black" />
                     Music
                 </NavLink>
@@ -85,12 +85,6 @@ const Home = () => {
                     <Music className="w-6 h-6 text-black" />
                     Music
                 </NavLink>
-                  <NavLink to= "gaming" className={({ isActive})=>isActive ? `flex flex-row md:flex-row items-center gap-5 bg-[#F2F2F2] hover:bg-[#E6E6E6] py-3 px-4 text-sm font-[500] text-black rounded-md`:`flex flex-row md:flex-row items-center gap-5 py-3 px-4 text-sm font-[500] text-black rounded-md hover:bg-[#F2F2F2]`}>
-                    <Gamepad className="w-6 h-6 text-black" />
-                    Gaming
-                </NavLink>
-
-              
             </div>
           </div>
            
@@ -118,18 +112,14 @@ const Home = () => {
                       )
                     })
                   }
-             
                  </div>
-
               ):(
                 <div className='flex items-center justify-center mt-10'>
  <h1 className="text-2xl text-center justify-end font-semibold text-neutral-500">No video found</h1>
                 </div>
-               
               )
              }
            </div>
-          
       </div>
          
           
