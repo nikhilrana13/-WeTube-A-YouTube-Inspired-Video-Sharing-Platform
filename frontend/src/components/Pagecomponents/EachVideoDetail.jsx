@@ -289,7 +289,7 @@ const EachVideoDetail = ({}) => {
       <div className='w-full  p-[7vw] flex gap-5  flex-col lg:flex-row min-h-screen main'>
         {
           videoloading ? (
-          <div className='animate-pulse space-y-4'>
+          <div className='animate-pulse  w-full md:w-[65%] space-y-4'>
       <div className='w-full h-[300px] bg-gray-300 rounded-md'></div>
       <div className='h-6 bg-gray-300 rounded w-3/4'></div>
       <div className='flex items-center gap-4 mt-4'>
