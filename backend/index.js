@@ -22,7 +22,7 @@ app.use(cors({
     credentials:true,
 }));
 
-console.log("Allowed origin is:", process.env.FRONTEND_URL);
+// console.log("Allowed origin is:", process.env.FRONTEND_URL);
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
@@ -47,9 +47,9 @@ mongoose.connect(process.env.MONGO_URL).then(()=>{
     console.log("error connecting to db", err);
 })
 
-app.get("/",(req,res)=>{
-    res.send("Api is running");
-})
+// app.get("/",(req,res)=>{
+//     res.send("Api is running");
+// })
 
 app.listen(port,()=>{
     console.log(`server is running on ${port}`);
