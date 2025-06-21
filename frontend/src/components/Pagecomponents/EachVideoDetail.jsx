@@ -17,7 +17,8 @@ import { useForm } from 'react-hook-form';
 import { use } from 'react';
 dayjs.extend(relativeTime);
 
-const EachVideoDetail = () => {
+const EachVideoDetail = ({}) => {
+  const [videoloading, setvideoloading] = useState(false);
   const [Views, setViews] = useState([]);
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const [Like, setLike] = useState(false);
@@ -37,6 +38,7 @@ const EachVideoDetail = () => {
   useEffect(() => {
     const FetchVideodetials = async () => {
       try {
+        setvideoloading(true);
         const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/video/${extractid}`, { 
           headers: {
             Authorization: `Bearer ${localStorage.getItem("jwttoken")}`
@@ -49,6 +51,10 @@ const EachVideoDetail = () => {
         }
       } catch (error) {
         console.log("failed to fetch video details", error);
+      }finally{
+        setTimeout(() => {
+          setvideoloading(false);
+        }, 2000);
       }
     }
     FetchVideodetials();
@@ -281,9 +287,24 @@ const EachVideoDetail = () => {
     <div className='w-full'>
       <Navbar />
       <div className='w-full  p-[7vw] flex gap-5  flex-col lg:flex-row min-h-screen main'>
-        {/* video detail content */}
-        <div className='w-full md:w-[65%]'>
-          {/* video player */}
+        {
+          videoloading ? (
+          <div className='animate-pulse space-y-4'>
+      <div className='w-full h-[300px] bg-gray-300 rounded-md'></div>
+      <div className='h-6 bg-gray-300 rounded w-3/4'></div>
+      <div className='flex items-center gap-4 mt-4'>
+        <div className='w-10 h-10 rounded-full bg-gray-300'></div>
+        <div className='space-y-2'>
+          <div className='h-4 bg-gray-200 rounded w-32'></div>
+          <div className='h-3 bg-gray-200 rounded w-24'></div>
+        </div>
+        <div className='h-8 w-24 bg-gray-300 rounded-full ml-auto'></div>
+      </div>
+      <div className='h-24 bg-gray-200 rounded mt-4'></div>
+    </div>
+          ):Object.keys(videoDetails).length > 0 ? (
+             <div className='w-full md:w-[65%]' >
+               {/* video player */}
           <div className='videoplayer w-full '>
             <video src={videoDetails?.Video} className='w-full rounded-md  ' autoPlay controls></video>
           </div>
@@ -404,7 +425,13 @@ const EachVideoDetail = () => {
 
           </div>
 
-        </div>
+              </div>
+
+          ):(
+            <h3 className='text-center text-[1.2rem] mt-5 font-[600]'>No video found</h3>
+          )
+        }
+      
         <div className='w-full md:w-[35%] min-h-screen ' >
           {
             loading ? (
@@ -443,3 +470,4 @@ const EachVideoDetail = () => {
 }
 
 export default EachVideoDetail;
+
