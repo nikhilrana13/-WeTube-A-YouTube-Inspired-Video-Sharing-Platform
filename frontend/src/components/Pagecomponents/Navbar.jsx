@@ -98,7 +98,7 @@ const Navbar = ({Searchinput,setSearchinput}) => {
                 {/* User profile section */}
                 <div className="flex items-center   gap-4">
                     {/* search button for mobile */}
-                     <button className="p-2 rounded-full md:hidden hover:bg-neutral-200 hover:dark:bg-neutral-700">
+                     <button className="p-2 rounded-full hidden hover:bg-neutral-200 hover:dark:bg-neutral-700">
                          <Search className="dark:text-neutral-400" />
                     </button>
                      {
