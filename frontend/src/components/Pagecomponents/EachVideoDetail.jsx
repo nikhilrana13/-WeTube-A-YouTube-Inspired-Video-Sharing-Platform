@@ -315,7 +315,7 @@ const EachVideoDetail = ({}) => {
             <div className='flex flex-col justify-between md:flex-row  gap-3'>
               <div className='flex gap-5 p-2  items-center '>
                 <Avatar>
-                  <AvatarImage src={videoDetails?.channelId?.profilepicture} />
+                  <AvatarImage loading="lazy" src={videoDetails?.channelId?.profilepicture} />
                   <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
                 <div className='flex flex-col'>
@@ -358,6 +358,7 @@ const EachVideoDetail = ({}) => {
                 {Currentuser && channeldetail ? (
                   <Avatar>
                     <AvatarImage
+                    loading="lazy" 
                       src={
                         channeldetail?.profilepicture?.trim()
                           ? channeldetail.profilepicture
@@ -397,7 +398,7 @@ const EachVideoDetail = ({}) => {
                             return (
                               <div className='flex gap-3'>
                                 <Avatar>
-                                  <AvatarImage src={comment?.channelId?.profilepicture} />
+                                  <AvatarImage loading="lazy"  src={comment?.channelId?.profilepicture} />
                                   <AvatarFallback>CN</AvatarFallback>
                                 </Avatar>
                                 <div className='flex flex-col gap-1'>

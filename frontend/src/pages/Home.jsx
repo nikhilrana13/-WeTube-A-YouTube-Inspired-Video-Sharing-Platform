@@ -115,7 +115,7 @@ const Home = () => {
                  </div>
               ):(
                 <div className='flex items-center justify-center mt-10'>
- <h1 className="text-2xl text-center justify-end font-semibold text-neutral-500">No video found</h1>
+              <h1 className="text-2xl text-center justify-end font-semibold text-neutral-500">No video found</h1>
                 </div>
               )
              }

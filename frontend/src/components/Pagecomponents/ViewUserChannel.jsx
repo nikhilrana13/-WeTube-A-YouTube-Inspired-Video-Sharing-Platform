@@ -50,7 +50,7 @@ const ViewUserChannel = () => {
                 style={{ backgroundImage: `url(${channelDetail?.coverimage})` }}
             ></div>
             <div className='relative z-10 mt-[200px] bg-white/70 dark:bg-neutral-900/70  backdrop-blue-md shadow-lg border flex flex-col md:flex-row gap-5 p-3 rounded-md  '>
-                <img src={channelDetail?.profilepicture} className='md:max-w-[200px] max-w-[100px] rounded-full' alt="" />
+                <img loading="lazy"  src={channelDetail?.profilepicture} className='md:max-w-[200px] max-w-[100px] rounded-full' alt="" />
                 <div className='flex flex-col gap-3'>
                     <div className='flex flex-col gap-2 '>
                         <h1 className='font-bold text-[1.3rem] md:text-[2rem] '>{channelDetail?.name}</h1>
